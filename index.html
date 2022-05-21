@@ -237,6 +237,7 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty.</th>
                                 <th scope="col">Total <small>(with discount)</small></th>
+
                             </tr>
                         </thead>
                         <tbody id="cart_list">
@@ -267,6 +268,10 @@
     <style>
         #cart_list tr td:nth-child(even):before {
             content: '$'
+        }
+        
+        .pointer {
+            cursor: pointer;
         }
     </style>
 </body>

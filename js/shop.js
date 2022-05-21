@@ -139,7 +139,7 @@ function printCart() {
 
         row = document.createElement('tr');
         name = document.createElement('th');
-        name.innerText = item.name;
+        name.innerHTML = item.name;
         row.append(name);
 
         ['price', 'quantity', 'subtotalWithDiscount', 'subtotal'].filter((e, i) => item[e]).filter((e, i) => i < 3).forEach(tag => {
@@ -149,6 +149,15 @@ function printCart() {
             row.append(td);
         });
 
+        // AÑADIR ICONO PARA IMPLEMENTAR FUNCTION removeFromCart
+
+        td = document.createElement('td');
+
+        td.innerHTML = '<i class="fas fa-minus-circle pointer"></i>';
+
+        td.addEventListener('click', () => removeFromCart(item.id));
+
+        row.append(td);
         productList.append(row);
     })
 }
@@ -184,6 +193,10 @@ function removeFromCart(id) {
     ((cart.find(e => e.id == id) || { quantity: 1 }).quantity) -= 1;
 
     cart = cart.filter(e => e.quantity > 0);
+
+    updateHTML();
+    saveCart();
+
 }
 
 function open_modal() {
@@ -202,7 +215,6 @@ function updateTotalWithDiscounts() {
 function insertTotalInHtml() {
 
     let total = updateTotalWithDiscounts();
-
 
     (document.getElementById('count_product') || {}).innerText = '$' + total;
     (document.getElementById('total_price') || {}).innerText = total;
