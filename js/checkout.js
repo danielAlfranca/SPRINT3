@@ -1,5 +1,5 @@
 // Exercise 6
-function validate() {
+function validate(showAlert) {
 
     event.preventDefault();
 
@@ -20,11 +20,15 @@ function validate() {
         error += Number(!valid);
     })
 
-    if (error > 0) {
-        alert("Error");
-    } else {
-        alert("OK");
+    if (showAlert) {
+
+        if (error > 0) {
+            alert("Error");
+        } else {
+            alert("OK");
+        }
     }
+
 }
 
 function checkValidityInput(inputName, value) {

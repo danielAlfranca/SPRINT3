@@ -193,7 +193,7 @@ function removeFromCart(id) {
     ((cart.find(e => e.id == id) || { quantity: 1 }).quantity) -= 1;
 
     cart = cart.filter(e => e.quantity > 0);
-
+    applyPromotionsCart();
     updateHTML();
     saveCart();
 
