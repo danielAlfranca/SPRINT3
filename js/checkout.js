@@ -1,4 +1,15 @@
 // Exercise 6
+
+const inputsStates = {
+
+    Name: false,
+    Email: false,
+    Address: false,
+    LastN: false,
+    Password: false,
+    Phone: false
+}
+
 function validate(showAlert) {
 
     event.preventDefault();
@@ -15,7 +26,7 @@ function validate(showAlert) {
 
         valid = checkValidityInput(tag, input.value);
 
-        setValidityInput(input, valid);
+        if (isDirty(tag) || showAlert) setValidityInput(input, valid);
 
         error += Number(!valid);
     })
@@ -62,4 +73,15 @@ function setValidityInput(input, is_valid) {
     input.classList.add(classes[Number(is_valid)]);
 
     input.classList.remove(classes[Number(!is_valid)]);
+}
+
+function setDirty(inputName) {
+    console.log(inputName);
+    inputsStates[inputName] = true;
+
+}
+
+function isDirty(inputName) {
+
+    return inputsStates[inputName]
 }
