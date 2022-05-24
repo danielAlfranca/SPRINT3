@@ -209,7 +209,7 @@ function open_modal() {
 
 function updateTotalWithDiscounts() {
 
-    return cart.reduce((sum, e) => sum + Number(e.subtotal || 0), 0);
+    return cart.reduce((sum, e) => sum + Number(e.subtotalWithDiscount || e.subtotal || 0), 0);
 }
 
 function insertTotalInHtml() {
